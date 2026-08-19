@@ -1,0 +1,1 @@
+import axios from 'axios'; export const api=axios.create({baseURL:'/api/v1'}); api.interceptors.request.use(c=>{c.auth={username:localStorage.user||'admin',password:localStorage.password||'admin123'};return c});

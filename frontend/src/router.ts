@@ -1,0 +1,1 @@
+import {createRouter,createWebHistory} from 'vue-router'; import ResourcePage from './views/ResourcePage.vue'; import Dashboard from './views/Dashboard.vue'; const routes=[{path:'/',component:Dashboard},{path:'/:resource',component:ResourcePage,props:true}]; export default createRouter({history:createWebHistory(),routes});

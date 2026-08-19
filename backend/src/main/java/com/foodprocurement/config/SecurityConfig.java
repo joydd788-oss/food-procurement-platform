@@ -1,0 +1,7 @@
+package com.foodprocurement.config;
+import org.springframework.context.annotation.*; import org.springframework.security.config.annotation.web.builders.HttpSecurity; import org.springframework.security.core.userdetails.*; import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder; import org.springframework.security.crypto.password.PasswordEncoder; import org.springframework.security.web.SecurityFilterChain;
+@Configuration public class SecurityConfig {
+ @Bean PasswordEncoder passwordEncoder(){ return new BCryptPasswordEncoder(); }
+ @Bean UserDetailsService users(PasswordEncoder p){ return new InMemoryUserDetailsManager(User.withUsername("admin").password(p.encode("admin123")).roles("ADMIN","REGULATOR").build(),User.withUsername("buyer").password(p.encode("buyer123")).roles("BUYER").build(),User.withUsername("supplier").password(p.encode("supplier123")).roles("SUPPLIER").build()); }
+ @Bean SecurityFilterChain filterChain(HttpSecurity h) throws Exception { return h.csrf(c->c.disable()).authorizeHttpRequests(a->a.requestMatchers("/v3/api-docs/**","/swagger-ui/**","/swagger-ui.html","/actuator/health").permitAll().requestMatchers("/v1/dashboard/**").hasAnyRole("ADMIN","REGULATOR").requestMatchers("/v1/inquiries/*/bids").hasAnyRole("ADMIN","BUYER","SUPPLIER").requestMatchers("/v1/**").hasAnyRole("ADMIN","BUYER","REGULATOR").anyRequest().authenticated()).httpBasic(b->{}).build(); }
+}
