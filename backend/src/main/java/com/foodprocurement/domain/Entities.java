@@ -66,7 +66,7 @@ public final class Entities {
   public static class Bid {
     @Id public UUID id = UUID.randomUUID();
     public UUID inquiryId;
-    @NotNull public UUID supplierId;
+    public UUID supplierId;
     @NotNull @DecimalMin("0.01") public BigDecimal amount;
     @Size(max = 500) public String remark;
     public Instant submittedAt = Instant.now();
