@@ -52,7 +52,7 @@ public class SecurityConfig {
         .build();
   }
 
-  @ConfigurationProperties(prefix = "app.users")
+  @ConfigurationProperties(prefix = "app")
   public record AppUsers(List<Account> users) {
     public record Account(String username, String password, String roles) {}
   }
