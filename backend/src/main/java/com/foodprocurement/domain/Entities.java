@@ -23,6 +23,7 @@ public final class Entities {
   }
 
   @Entity
+  @Table(name = "supplier")
   public static class Supplier {
     @Id public UUID id = UUID.randomUUID();
     @NotBlank @Size(max = 160) public String name;
@@ -50,6 +51,7 @@ public final class Entities {
   }
 
   @Entity
+  @Table(name = "inquiry")
   public static class Inquiry {
     @Id public UUID id = UUID.randomUUID();
     @NotBlank @Size(max = 40) public String inquiryNo;
@@ -60,6 +62,7 @@ public final class Entities {
   }
 
   @Entity
+  @Table(name = "bid")
   public static class Bid {
     @Id public UUID id = UUID.randomUUID();
     public UUID inquiryId;
@@ -82,6 +85,7 @@ public final class Entities {
   }
 
   @Entity
+  @Table(name = "delivery")
   public static class Delivery {
     @Id public UUID id = UUID.randomUUID();
     @NotBlank @Size(max = 40) public String deliveryNo;
@@ -92,6 +96,7 @@ public final class Entities {
   }
 
   @Entity
+  @Table(name = "inspection")
   public static class Inspection {
     @Id public UUID id = UUID.randomUUID();
     public UUID deliveryId;
@@ -116,6 +121,7 @@ public final class Entities {
   }
 
   @Entity
+  @Table(name = "settlement")
   public static class Settlement {
     @Id public UUID id = UUID.randomUUID();
     @NotBlank @Size(max = 40) public String settlementNo;
