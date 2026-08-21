@@ -14,7 +14,7 @@ docker compose up --build
 
 账户（HTTP Basic）：用户名与密码全部来自环境变量（`ADMIN_USERNAME`/`ADMIN_PASSWORD`、`BUYER_*`、`SUPPLIER_*`，见 `.env.example`），应用代码不再内置任何默认账户。未配置账户密码时 `docker compose` 会直接报错拒绝启动——这是有意设计，避免默认口令上线。生产部署建议在此基础上接入企业 SSO/OIDC。
 
-完整部署、账户、日常操作、API 与备份指南见 [docs/OPERATIONS.md](docs/OPERATIONS.md)。
+完整部署、账户、API 与备份指南见 [docs/OPERATIONS.md](docs/OPERATIONS.md)；面向日常操作的使用手册见 [docs/USER_GUIDE.md](docs/USER_GUIDE.md)。
 
 ## 架构
 
